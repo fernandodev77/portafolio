@@ -1,0 +1,26 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#2a2a2a"/>
+  
+  <!-- Blog post visual -->
+  <rect x="50" y="40" width="300" height="120" rx="10" fill="#3a3a3a"/>
+  
+  <!-- React performance elements -->
+  <g transform="translate(100, 80)">
+    <!-- React logo simplified -->
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#61dafb" stroke-width="2"/>
+    <circle cx="0" cy="0" r="5" fill="#61dafb"/>
+    <ellipse cx="0" cy="0" rx="12" ry="25" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(30)"/>
+    <ellipse cx="0" cy="0" rx="12" ry="25" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(90)"/>
+  </g>
+  
+  <!-- Performance graph -->
+  <polyline points="140,120 170,90 200,100 230,70 260,85 290,60" stroke="#ff0080" stroke-width="2" fill="none"/>
+  
+  <!-- Text elements -->
+  <rect x="140" y="60" width="180" height="10" rx="2" fill="#4a4a4a"/>
+  <rect x="140" y="80" width="150" height="10" rx="2" fill="#4a4a4a"/>
+  
+  <!-- Text -->
+  <text x="200" y="180" font-family="Arial" font-size="14" fill="white" text-anchor="middle">React Performance Blog Post</text>
+</svg>

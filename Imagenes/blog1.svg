@@ -1,0 +1,17 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#2a2a2a"/>
+  
+  <!-- Blog post visual -->
+  <rect x="50" y="40" width="300" height="120" rx="10" fill="#3a3a3a"/>
+  
+  <!-- UX design elements -->
+  <circle cx="100" cy="80" r="25" fill="#ff7675" opacity="0.8"/>
+  <rect x="140" y="60" width="180" height="10" rx="2" fill="#4a4a4a"/>
+  <rect x="140" y="80" width="150" height="10" rx="2" fill="#4a4a4a"/>
+  <rect x="140" y="100" width="170" height="10" rx="2" fill="#4a4a4a"/>
+  <rect x="140" y="120" width="100" height="10" rx="2" fill="#4a4a4a"/>
+  
+  <!-- Text -->
+  <text x="200" y="180" font-family="Arial" font-size="14" fill="white" text-anchor="middle">UX Design Trends Blog Post</text>
+</svg>

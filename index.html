@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Castillo | Portafolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animación inicial -->
+    <div class="intro-animation">
+        <div class="logo-container">
+            <div class="logo">Fernando Castillo</div>
+            <div class="tagline">Developer & Designer</div>
+        </div>
+        <div class="animation-elements">
+            <div class="element code">&lt;/&gt;</div>
+            <div class="element design"><i class="fas fa-bezier-curve"></i></div>
+            <div class="element ux">UX</div>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">FC</div>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#acerca">Acerca de mí</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#blog">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="section active">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="glitch-text">Desarrollador & Diseñador UX/UI</h1>
+                <p class="subtitle">Creando experiencias digitales memorables</p>
+                <div class="cta-buttons">
+                    <a href="#portafolio" class="btn primary">Ver Proyectos</a>
+                    <a href="#acerca" class="btn secondary">Conóceme</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="shape"></div>
+                <div class="profile-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Portafolio -->
+    <section id="portafolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Portafolio</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Desarrollo Web</button>
+                <button class="filter-btn" data-filter="app">Aplicaciones</button>
+                <button class="filter-btn" data-filter="design">Diseño UX/UI</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Proyecto 1 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-content">
+                        <div class="portfolio-img-container">
+                            <img src="./Imagenes/proyecto1.gif" alt="Proyecto 1" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/username/project1" target="_blank" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://project1-demo.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Proyecto 1</h3>
+                            <p>Desarrollo web con React y Node.js</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-content">
+                        <div class="portfolio-img-container">
+                            <img src="./Imagenes/proyecto2.gif" alt="Proyecto 2" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/username/project2" target="_blank" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://project2-demo.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Proyecto 2</h3>
+                            <p>Diseño UX/UI para aplicación móvil</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 3 -->
+                <div class="portfolio-item" data-category="app">
+                    <div class="portfolio-content">
+                        <div class="portfolio-img-container">
+                            <img src="./Imagenes/proyecto3.gif" alt="Proyecto 3" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/username/project3" target="_blank" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://project3-demo.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Proyecto 3</h3>
+                            <p>Aplicación móvil con Flutter</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 4 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-content">
+                        <div class="portfolio-img-container">
+                            <img src="./Imagenes/proyecto4.jpg" alt="Proyecto 4" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/username/project4" target="_blank" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://project4-demo.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Proyecto 4</h3>
+                            <p>E-commerce con MERN Stack</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Acerca de mí -->
+    <section id="acerca" class="section">
+        <div class="container">
+            <h2 class="section-title">Acerca de mí</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-bg"></div>
+                        <div class="image-frame"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p class="highlight">Desarrollador Full Stack & Diseñador UX/UI con pasión por crear experiencias digitales excepcionales.</p>
+                    <p>Con formación técnica y en diseño, me desempeño en el desarrollo web y diseño de interfaces, me especializo en crear soluciones digitales que combinan funcionalidad y estética. Mi enfoque se centra en el usuario, asegurando que cada proyecto no solo se vea bien, sino que también ofrezca una experiencia intuitiva y agradable.</p>
+                    <div class="skills">
+                        <h3>Habilidades</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe XD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CV -->
+    <section id="cv" class="section">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="cv-content">
+                <div class="cv-section">
+                    <h3 class="cv-section-title">Experiencia Profesional</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2025</div>
+                            <div class="timeline-content">
+                                <h4>FullStack Developer / Designer</h4>
+                                <p class="company">Generation México</p>
+                                <p>Desarrollo completo de un sitio web de e-commerce, trabajando en el FrontEnd y BackEnd. Diseño y personalización de elementos UI en Penpot para mejorar la identidad visual.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-content">
+                                <h4>Diseñador</h4>
+                                <p class="company">Macp Impresiones</p>
+                                <p>Trabaje como diseñador e impresor, en el área de publicidad de una empresa de impresión y offset</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-section">
+                    <h3 class="cv-section-title">Educación</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2020</div>
+                            <div class="timeline-content">
+                                <h4>Licenciatura en Filosofía</h4>
+                                <p class="company">Facultad de Filosofía y Letras - UNAM</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2018</div>
+                            <div class="timeline-content">
+                                <h4>Certificación en Diseño UX/UI</h4>
+                                <p class="company">Design Academy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-download">
+                    <a href="./recursos/cvfernando.pdf" download class="btn primary"><i class="fas fa-download"></i> Descargar CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Blog -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-img-container">
+                        <img src="./Imagenes/blog1.jpg" alt="Blog 1" class="blog-img">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">12 Mayo, 2023</div>
+                        <h3 class="blog-title">Tendencias en Diseño UX para 2023</h3>
+                        <p class="blog-excerpt">Explorando las últimas tendencias en diseño de experiencia de usuario que están definiendo el panorama digital este año.</p>
+                        <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-img-container">
+                        <img src="./Imagenes/blog2.jpg" alt="Blog 2" class="blog-img">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">28 Abril, 2023</div>
+                        <h3 class="blog-title">Optimizando el Rendimiento de React</h3>
+                        <p class="blog-excerpt">Técnicas avanzadas para mejorar el rendimiento de tus aplicaciones React y ofrecer una experiencia más fluida.</p>
+                        <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>

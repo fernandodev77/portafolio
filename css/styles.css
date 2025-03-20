@@ -1,0 +1,991 @@
+/* Variables */
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-primary: #7928ca;
+    --accent-secondary: #ff0080;
+    --transition-slow: 0.5s ease;
+    --transition-medium: 0.3s ease;
+    --transition-fast: 0.2s ease;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Intro Animation */
+.intro-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 1s ease 4s forwards;
+    overflow: hidden;
+}
+
+.intro-animation .logo-container {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.intro-animation .logo {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glitch 3s infinite;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+} /* ✅ Se cierra correctamente */
+
+/* ✅ Se agregan las propiedades del texto fuera de @keyframes */
+.glitch-text {
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    animation: glitch 1s infinite;
+}
+
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+}
+
+.animation-elements {
+    display: flex;
+    gap: 30px;
+}
+
+.element {
+    font-size: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.element.code {
+    color: #61dafb;
+    animation: fadeInUp 0.8s ease 0.5s forwards;
+}
+
+.element.design {
+    color: #ff7675;
+    animation: fadeInUp 0.8s ease 1s forwards;
+}
+
+.element.ux {
+    color: #fdcb6e;
+    animation: fadeInUp 0.8s ease 1.5s forwards;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: background-color var(--transition-medium);
+}
+
+.navbar.scrolled {
+    background-color: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 15px 0;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    margin-left: 30px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    margin-right: 30px;
+}
+
+.nav-links a {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glitch-text {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: width var(--transition-medium);
+}
+
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    margin-right: 30px;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right var(--transition-medium);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .hero-content {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: var(--transition-medium);
+}
+
+/* Sections */
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
+    display: block;
+}
+
+.section.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    display: block;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+} /* ✅ Se cierra correctamente */
+
+/* ✅ Se coloca el degradado en la clase CSS */
+.glitch-text {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+
+/* Hero Section */
+#inicio {
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.glitch-text {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    animation: glitch 5s infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+}
+
+.btn.primary {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border: none;
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--accent-primary);
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    height: 400px;
+}
+
+.shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+} /* ✅ Aquí cerramos correctamente la animación */
+
+/* ✅ Ahora aplicamos las propiedades CSS al elemento */
+.glitch-text {
+    position: absolute; /* Necesario para que top y left funcionen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    animation: glitch 1s infinite, morphShape 10s infinite;
+    
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.profile-img {
+    position: absolute;
+    width: 280px;
+    height: 350px;
+    background-image: url('../Imagenes/profile.jpg');
+    background-size: cover;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Portfolio Section */
+.portfolio-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: var(--bg-tertiary);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+    transition: transform var(--transition-medium), opacity var(--transition-medium);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-img-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.portfolio-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+}
+
+.portfolio-item:hover .portfolio-img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--transition-medium);
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+} /* Aquí cerramos correctamente la animación */
+
+/* Ahora aplicamos la animación a un elemento */
+.glitch-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
+    animation: glitch 1s infinite;
+}
+
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 0.5;
+}
+
+.portfolio-links {
+    display: flex;
+    gap: 20px;
+}
+
+.portfolio-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.portfolio-item:hover .portfolio-link {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.portfolio-item:hover .portfolio-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.portfolio-item:hover .portfolio-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.portfolio-link:hover {
+    background-color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.portfolio-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.image-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+}
+
+.glitch-text {
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glitch 5s infinite;
+    border-radius: 10px;
+    transform: rotate(-5deg) translateY(-5px);
+    animation: glitch 1s infinite;
+}
+
+
+.image-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Imagenes/about.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.highlight {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    color: var(--text-primary);
+}
+
+.skills {
+    margin-top: 30px;
+}
+
+.skills h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    padding: 8px 15px;
+    background-color: var(--bg-tertiary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.skill-tag:hover {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
+                     0.025em 0.025em 0 var(--accent-secondary);
+        transform: translate(-0.5px, 0.5px);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
+                     0.05em 0 0 var(--accent-secondary);
+        transform: translate(0.5px, 0);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 var(--accent-primary),
+                     -0.05em -0.025em 0 var(--accent-secondary);
+        transform: translate(0);
+    }
+}
