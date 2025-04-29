@@ -324,6 +324,7 @@ img {
     transform: translateY(0);
     transition: opacity var(--transition-medium), transform var(--transition-medium);
     display: block;
+    
 }
 
 .section.active {
@@ -655,6 +656,7 @@ img {
     align-items: center;
     justify-content: center;
     transition: opacity var(--transition-medium);
+    
 }
 
 
