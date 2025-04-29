@@ -392,6 +392,13 @@ img {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .glitch-text {
+        position: static;
+        font-size: 2.5rem;
+    }
+}
+
 .subtitle {
     font-size: 1.5rem;
     color: var(--text-secondary);
@@ -467,6 +474,95 @@ img {
     z-index: 2;
     border-radius: 10px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* About Section */
+
+@media (max-width: 768px) {
+   .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+   
+}
+
+
+.about-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.image-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+}
+
+
+
+
+.image-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Imagenes/about.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.highlight {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    color: var(--text-primary);
+}
+
+.skills {
+    margin-top: 30px;
+}
+
+.skills h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    padding: 8px 15px;
+    background-color: var(--bg-tertiary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.skill-tag:hover {
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
 /* Portfolio Section */
@@ -620,81 +716,5 @@ img {
     font-size: 0.9rem;
 }
 
-/* About Section */
-.about-content {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-}
 
-.about-image {
-    flex: 1;
-}
-
-.image-container {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    margin: 0 auto;
-}
-
-.image-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-}
-
-
-
-
-.image-frame {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('../Imagenes/about.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.about-text {
-    flex: 1;
-}
-
-.highlight {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    line-height: 1.4;
-    color: var(--text-primary);
-}
-
-.skills {
-    margin-top: 30px;
-}
-
-.skills h3 {
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill-tag {
-    padding: 8px 15px;
-    background-color: var(--bg-tertiary);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: all var(--transition-fast);
-}
-
-.skill-tag:hover {
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-}
 
