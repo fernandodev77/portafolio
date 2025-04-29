@@ -27,15 +27,7 @@ function initPage() {
     });
 
   
-    // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinksContainer = document.querySelector('.nav-links');
-    if(menuToggle && navLinksContainer) {
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinksContainer.classList.toggle('active');
-        });
-    }
+   
 
    
 
@@ -66,6 +58,7 @@ function initPage() {
     }
 
     // Efecto hover en items de portafolio
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             const overlay = item.querySelector('.portfolio-overlay');
