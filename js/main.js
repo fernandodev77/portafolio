@@ -12,40 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         initPage();
     }, 4000); // 4 seconds for the intro animation
-
-    // Scroll event listener for navbar and section highlighting
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        // Add scrolled class to navbar
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        // Find which section is in view
-        let currentSection = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            const scrollPosition = window.scrollY + window.innerHeight / 3;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-
-        // Update active nav link
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + currentSection) {
-                link.classList.add('active');
-            }
-        });
-    });
 });
 
 function initPage() {
@@ -60,100 +26,20 @@ function initPage() {
         }, 100);
     });
 
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            
-            // Update active nav link
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Smooth scroll to section instead of hiding/showing
-            const targetSection = document.querySelector(targetId);
-            window.scrollTo({
-                top: targetSection.offsetTop - 80, // Offset for navbar height
-                behavior: 'smooth'
-            });
-            
-            // Add active class to target section
-            sections.forEach(section => section.classList.remove('active'));
-            targetSection.classList.add('active');
-        });
-    });
-
-    // Mobile menu toggle
+  
+    // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinksContainer = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinksContainer.classList.toggle('active');
-    });
-
-    // Portfolio filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    // Initialize all items as visible
-    portfolioItems.forEach(item => {
-        item.style.display = 'block';
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)';
-    });
-    
-    // Función para filtrar los elementos del portafolio
-    function filterPortfolio(filterValue) {
-        portfolioItems.forEach(item => {
-            const category = item.getAttribute('data-category');
-            if (filterValue === 'all' || category === filterValue) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 500);
-            }
+    if(menuToggle && navLinksContainer) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
         });
     }
-    
-    // Agregar eventos de clic a los botones de filtro
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(filterBtn => filterBtn.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const filterValue = btn.getAttribute('data-filter');
-            filterPortfolio(filterValue);
-        });
-    });
-    
-    // Aplicar el filtro activo al cargar la página
-    const activeFilterBtn = document.querySelector('.filter-btn.active');
-    if (activeFilterBtn) {
-        const initialFilterValue = activeFilterBtn.getAttribute('data-filter');
-        filterPortfolio(initialFilterValue);
-    }
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+   
 
-    // Glitch text effect
+    // Efecto glitch en texto
     const glitchText = document.querySelector('.glitch-text');
     if (glitchText) {
         setInterval(() => {
@@ -164,13 +50,13 @@ function initPage() {
         }, 3000);
     }
 
-    // Skill tags animation
+    // Animación de etiquetas de habilidades
     const skillTags = document.querySelectorAll('.skill-tag');
     skillTags.forEach((tag, index) => {
         tag.style.animationDelay = `${index * 0.1}s`;
     });
 
-    // Initialize AOS (Animate On Scroll) if available
+    // Inicializar AOS si está disponible
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
@@ -179,10 +65,11 @@ function initPage() {
         });
     }
 
-    // Add hover effect to portfolio items
+    // Efecto hover en items de portafolio
     portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            item.querySelector('.portfolio-overlay').style.opacity = '1';
+            const overlay = item.querySelector('.portfolio-overlay');
+            if(overlay) overlay.style.opacity = '1';
             const links = item.querySelectorAll('.portfolio-link');
             links.forEach((link, index) => {
                 setTimeout(() => {
@@ -191,9 +78,9 @@ function initPage() {
                 }, index * 100);
             });
         });
-
         item.addEventListener('mouseleave', () => {
-            item.querySelector('.portfolio-overlay').style.opacity = '0';
+            const overlay = item.querySelector('.portfolio-overlay');
+            if(overlay) overlay.style.opacity = '0';
             const links = item.querySelectorAll('.portfolio-link');
             links.forEach(link => {
                 link.style.opacity = '0';
@@ -202,19 +89,18 @@ function initPage() {
         });
     });
 
-    // Blog card hover effects
+    // Efectos hover en blog cards
     const blogCards = document.querySelectorAll('.blog-card');
     blogCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.classList.add('hover');
         });
-
         card.addEventListener('mouseleave', () => {
             card.classList.remove('hover');
         });
     });
 
-    // Add animations to timeline items
+    // Animaciones en timeline
     const timelineItems = document.querySelectorAll('.timeline-item');
     timelineItems.forEach((item, index) => {
         item.style.animationDelay = `${index * 0.3}s`;

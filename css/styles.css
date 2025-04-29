@@ -1,4 +1,3 @@
-/* Variables */
 :root {
     --bg-primary: #121212;
     --bg-secondary: #1e1e1e;
@@ -132,17 +131,9 @@ img {
                      -0.05em -0.025em 0 var(--accent-secondary);
         transform: translate(0);
     }
-} /* ✅ Se cierra correctamente */
+} 
 
-/* ✅ Se agregan las propiedades del texto fuera de @keyframes */
-.glitch-text {
-    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 15px;
-    animation: glitch 1s infinite;
-}
+
 
 
 .tagline {
@@ -217,7 +208,9 @@ img {
     transition: color var(--transition-fast);
 }
 
-.nav-links a:hover,
+.nav-links a:hover {
+    color: var(--accent-secondary)
+}
 .nav-links a.active {
     color: var(--text-primary);
 }
@@ -254,13 +247,7 @@ img {
     }
 }
 
-.glitch-text {
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: width var(--transition-medium);
-}
+
 
 
 .nav-links a:hover::after,
@@ -367,48 +354,9 @@ img {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-} /* ✅ Se cierra correctamente */
 
-/* ✅ Se coloca el degradado en la clase CSS */
-.glitch-text {
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-}
+
+
 
 
 /* Hero Section */
@@ -423,11 +371,25 @@ img {
 }
 
 .glitch-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg) translateY(-5px);
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 20px;
-    position: relative;
-    animation: glitch 5s infinite;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+    z-index: 1;
+    border-radius: 10px;
+    animation: glitch 1s infinite, morphShape 10s infinite;
+    transition: opacity var(--transition-medium), transform var(--transition-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .subtitle {
@@ -459,47 +421,8 @@ img {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn.primary {
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-}
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-}
+
 
 .btn.primary {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
@@ -527,57 +450,9 @@ img {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-} /* ✅ Aquí cerramos correctamente la animación */
 
-/* ✅ Ahora aplicamos las propiedades CSS al elemento */
-.glitch-text {
-    position: absolute; /* Necesario para que top y left funcionen */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-    animation: glitch 1s infinite, morphShape 10s infinite;
-    
-    opacity: 0.8;
-    z-index: 1;
-}
+
+
 
 .profile-img {
     position: absolute;
@@ -618,43 +493,7 @@ img {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-}
+
 
 .filter-btn:hover,
 .filter-btn.active {
@@ -722,53 +561,7 @@ img {
     transition: opacity var(--transition-medium);
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-} /* Aquí cerramos correctamente la animación */
 
-/* Ahora aplicamos la animación a un elemento */
-.glitch-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-medium), transform var(--transition-medium);
-    animation: glitch 1s infinite;
-}
 
 
 .portfolio-item:hover .portfolio-overlay {
@@ -852,54 +645,7 @@ img {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-}
 
-.glitch-text {
-    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glitch 5s infinite;
-    border-radius: 10px;
-    transform: rotate(-5deg) translateY(-5px);
-    animation: glitch 1s infinite;
-}
 
 
 .image-frame {
@@ -952,40 +698,3 @@ img {
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
 }
 
-@keyframes glitch {
-    0% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    14% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-    15% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    49% {
-        text-shadow: -0.05em -0.025em 0 var(--accent-primary),
-                     0.025em 0.025em 0 var(--accent-secondary);
-        transform: translate(-0.5px, 0.5px);
-    }
-    50% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    99% {
-        text-shadow: 0.025em 0.05em 0 var(--accent-primary),
-                     0.05em 0 0 var(--accent-secondary);
-        transform: translate(0.5px, 0);
-    }
-    100% {
-        text-shadow: 0.05em 0 0 var(--accent-primary),
-                     -0.05em -0.025em 0 var(--accent-secondary);
-        transform: translate(0);
-    }
-}
