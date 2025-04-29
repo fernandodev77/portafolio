@@ -257,13 +257,6 @@ img {
 
 
 
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-primary);
-    border-radius: 2px;
-    transition: all var(--transition-medium);
-}
 
 
 
