@@ -1,0 +1,829 @@
+/* Estilos para el Portafolio de Diseño */
+:root {
+    /* Colores base del portafolio de diseño */
+    --design-primary: #ff6b6b;
+    --design-secondary: #4ecdc4;
+    --design-accent: #ffd166;
+    --design-dark: #090909;
+    --design-light: #f8f9fa;
+    
+    /* Colores específicos para cada sección */
+    --web-color: #6c5ce7;
+    --logo-color: #00b894;
+    --serigrafia-color: #e84393;
+    --merch-color: #fdcb6e;
+}
+
+/* Estilos generales para el portafolio de diseño */
+.design-navbar {
+    background-color: rgba(45, 52, 54, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.design-navbar .logo {
+    color: var(--design-primary);
+}
+
+.design-navbar .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.design-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--design-primary);
+    transition: width 0.3s ease;
+}
+
+.design-navbar .nav-link:hover {
+    color: var(--design-primary);
+}
+
+.design-navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 200;
+    margin-right: 30px;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Hero Section */
+.design-hero-image {
+    position: relative;
+}
+
+.design-hero-image .shape {
+    background: linear-gradient(45deg, var(--design-primary), var(--design-secondary));
+}
+
+.design-profile-img {
+    background-image: url('../Imagenes/profile.svg');
+    background-size: cover;
+    background-position: center;
+    border: 4px solid var(--design-light);
+}
+
+/* Secciones de diseño generales */
+.design-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.design-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Sección Diseño Web */
+.web-section {
+    background-color: var(--design-dark);
+    color: var(--design-light);
+}
+
+.web-section .section-title {
+    color: var(--web-color);
+}
+
+.web-swiper .swiper-button-next,
+.web-swiper .swiper-button-prev {
+    visibility: visible !important;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff !important;
+}
+
+.web-swiper .swiper-button-next:hover,
+.web-swiper .swiper-button-prev:hover {
+    background-color: var(--web-color);
+    transform: scale(1.1);
+}
+
+.web-swiper {
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.design-card {
+    background-color: var(--bg-tertiary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.design-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.design-img {
+    height: 250px;
+    overflow: hidden;
+}
+
+.design-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.design-card:hover .design-img img {
+    transform: scale(1.1);
+}
+
+.design-info {
+    padding: 20px;
+}
+
+.design-info h3 {
+    margin-bottom: 10px;
+    color: var(--web-color);
+}
+
+.web-swiper .swiper-pagination-bullet {
+    background-color: var(--web-color);
+}
+
+.web-swiper .swiper-button-next,
+.web-swiper .swiper-button-prev {
+    color: var(--web-color);
+}
+
+/* Sección Diseño de Logotipo */
+.logo-section {
+    background-color: var(--bg-primary);
+}
+
+.logo-section::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="%2300b894" cx="50" cy="50" r="40"/></svg>');
+}
+
+.logo-section .section-title {
+    color: var(--logo-color);
+}
+
+.logo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.logo-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 350px;
+}
+
+.logo-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.logo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.logo-item:hover .logo-img img {
+    transform: scale(1.1);
+}
+
+.logo-item:hover .logo-overlay {
+    transform: translateY(0);
+}
+
+.logo-overlay h3 {
+    color: var(--design-light);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.logo-overlay p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Sección Serigrafía */
+.serigrafia-section {
+    background-color: var(--bg-secondary);
+}
+
+.serigrafia-section::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e84393" d="M20 20L80 20L80 80L20 80Z"/></svg>');
+}
+
+.serigrafia-section .section-title {
+    color: var(--serigrafia-color);
+}
+
+.serigrafia-showcase {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.serigrafia-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.serigrafia-item.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.serigrafia-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.serigrafia-info {
+    position: relative;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 2;
+}
+
+.serigrafia-info h3 {
+    color: var(--design-light);
+    margin-bottom: 10px;
+}
+
+.serigrafia-controls {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3;
+    display: flex;
+    gap: 15px;
+}
+
+.serigrafia-controls button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--design-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.serigrafia-controls button:hover {
+    background-color: var(--serigrafia-color);
+}
+
+/* Sección Merchandising */
+.merch-section {
+    background-color: var(--bg-secondary);
+}
+
+.merch-section::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23ff6b6b" x="20" y="20" width="60" height="60" rx="10" ry="10"/></svg>');
+}
+
+.merch-section .section-title {
+    color: var(--merch-color);
+}
+
+/* Carrusel de Merchandising */
+.merch-showcase {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.merch-showcase .swiper-button-next,
+.merch-showcase .swiper-button-prev {
+    visibility: visible !important;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff !important;
+}
+
+.merch-showcase .swiper-button-next:hover,
+.merch-showcase .swiper-button-prev:hover {
+    background-color: var(--merch-color);
+    transform: scale(1.1);
+}
+
+.merch-slider-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.merch-showcase .swiper-slide {
+    opacity: 1;
+}
+
+.merch-slider-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.merch-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 30px 20px 20px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.merch-slider-item:hover .merch-info {
+    transform: translateY(-10px);
+}
+
+.merch-info h3 {
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.merch-controls {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    display: none; /* Ocultamos los controles antiguos ya que usamos los de Swiper */
+    justify-content: space-between;
+    padding: 0 20px;
+    transform: translateY(50%);
+}
+
+.merch-prev-btn,
+.merch-next-btn {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.merch-prev-btn:hover,
+.merch-next-btn:hover {
+    background-color: var(--merch-color);
+    transform: scale(1.1);
+}
+
+.merch-showcase .swiper-button-next,
+.merch-showcase .swiper-button-prev {
+    color: var(--merch-color) !important;
+}
+
+.merch-showcase .swiper-pagination-bullet {
+    background-color: var(--merch-color);
+}
+
+/* Estilos para el modal de visualización de imágenes */
+.fullscreen-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-image,
+.modal-video {
+    max-width: 100%;
+    max-height: 90vh;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+}
+
+/* Estilos para los carruseles de logos */
+.logo-swiper {
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-swiper .swiper-slide {
+    height: 100%;
+}
+
+.logo-swiper .swiper-pagination-bullet {
+    background-color: var(--logo-color);
+}
+
+.logo-swiper .swiper-button-next,
+.logo-swiper .swiper-button-prev {
+    color: #ffffff;
+    transform: scale(0.7);
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: visible !important;
+}
+
+.logo-swiper .swiper-button-next:hover,
+.logo-swiper .swiper-button-prev:hover {
+    transform: scale(0.8);
+    background-color: var(--logo-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Footer personalizado */
+.footer {
+    background-color: var(--design-dark);
+    padding: 80px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-logo .logo {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--design-primary), var(--design-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    color: var(--design-light);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-links h3::after,
+.footer-contact h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, var(--design-primary), var(--design-secondary));
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--design-primary);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--design-primary);
+    color: var(--design-light);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Media Queries para Responsive Design */
+@media (max-width: 992px) {
+    .design-section {
+        padding: 80px 0;
+    }
+    
+    .serigrafia-showcase {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s ease;
+        z-index: 100;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+    }
+    
+    .hero-content,
+    .hero-image {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin-bottom: 50px;
+    }
+    
+    .design-section {
+        padding: 60px 0;
+    }
+    
+    .logo-gallery {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 400px;
+    }
+    
+    .merch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .serigrafia-showcase {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+    }
+    
+    .logo-gallery,
+    .merch-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .serigrafia-showcase {
+        height: 300px;
+    }
+    
+    .serigrafia-info {
+        padding: 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Navegación de Swiper personalizada */
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    transition: all 0.3s ease;
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: var(--design-primary);
+    transform: scale(1.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.logo-swiper .swiper-button-next,
+.logo-swiper .swiper-button-prev {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.logo-item:hover .swiper-button-next,
+.logo-item:hover .swiper-button-prev {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.design-section {
+    animation: fadeIn 1s ease;
+}
+
+/* Animación para elementos al hacer scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
