@@ -737,19 +737,22 @@
 @media (max-width: 576px) {
     .section-title {
         font-size: 2rem;
-        position: static;
-        text-align: center;
-        display: block;
+      
         
     }
     
     .section-description {
         font-size: 1rem;
     }
+
+    .logo-img img {
+        align-content: center;
+    }
     
     .logo-gallery,
     .merch-grid {
         grid-template-columns: 1fr;
+     
     }
     
     .serigrafia-showcase {
