@@ -354,7 +354,7 @@
 }
 
 .serigrafia-controls button {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.6);
     border: none;
     width: 40px;
     height: 40px;
@@ -362,13 +362,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--design-light);
+    color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .serigrafia-controls button:hover {
     background-color: var(--serigrafia-color);
+    transform: scale(1.1);
 }
 
 /* Sección Merchandising */
@@ -735,6 +737,10 @@
 @media (max-width: 576px) {
     .section-title {
         font-size: 2rem;
+        position: static;
+        text-align: center;
+        display: block;
+        
     }
     
     .section-description {
@@ -790,14 +796,17 @@
 
 .logo-swiper .swiper-button-next,
 .logo-swiper .swiper-button-prev {
-    opacity: 0.8;
+    opacity: 1;
     transition: all 0.3s ease;
+    visibility: visible !important;
+    z-index: 20;
 }
 
 .logo-item:hover .swiper-button-next,
 .logo-item:hover .swiper-button-prev {
     opacity: 1;
     transform: scale(1.1);
+    background-color: var(--logo-color);
 }
 
 /* Animaciones */
