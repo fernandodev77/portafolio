@@ -219,28 +219,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Animación al hacer scroll
-    const animateElements = document.querySelectorAll('.design-section, .section-title, .section-description, .design-card, .logo-item, .merch-item');
+    const animateElements = document.querySelectorAll('.section-title, .section-description, .design-card, .logo-item, .merch-item, .serigrafia-showcase, .merch-showcase');
     
     animateElements.forEach(element => {
         element.classList.add('animate-on-scroll');
     });
 
-    function checkScroll() {
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight * 0.9) {
-                element.classList.add('visible');
-            }
-        });
-    }
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // se activa cuando el 10% del elemento es visible
+    };
 
-    // Comprobar posición inicial
-    checkScroll();
+    // Crear el observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        } else {
+            entry.target.classList.remove('visible');
+        }
+    });
+}, observerOptions);
 
-    // Comprobar al hacer scroll
-    window.addEventListener('scroll', checkScroll);
+// Aplicar la clase base y observar
+animateElements.forEach(element => {
+    element.classList.add('animate-on-scroll');
+    observer.observe(element);
+});
+
+   
+
+    
+   
 
     // Navegación suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
