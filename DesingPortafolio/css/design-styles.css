@@ -10,15 +10,25 @@
     /* Colores específicos para cada sección */
     --web-color: #6c5ce7;
     --logo-color: #00b894;
-    --serigrafia-color: #e84393;
+    --serigrafia-color: #db08f7;
     --merch-color: #fdcb6e;
 }
 
 /* Estilos generales para el portafolio de diseño */
 .design-navbar {
-    background-color: rgba(45, 52, 54, 0.95);
-    backdrop-filter: blur(10px);
+  /* Degradado inicial, con un poco más de opacidad */
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 70%,
+    rgba(255, 2, 196, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  transition: background-image 0.5s ease-in-out, padding var(--transition-medium), box-shadow var(--transition-medium);
+  /* Asegurar que el navbar siempre esté por encima de otros elementos */
+  z-index: 100;
 }
+
+
 
 .design-navbar .logo {
     color: var(--design-primary);

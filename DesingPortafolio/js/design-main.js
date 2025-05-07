@@ -219,28 +219,156 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Animación al hacer scroll
-    const animateElements = document.querySelectorAll('.design-section, .section-title, .section-description, .design-card, .logo-item, .merch-item');
+    const animateElements = document.querySelectorAll('.section-title, .section-description, .design-card, .logo-item, .merch-item, .serigrafia-showcase, .merch-showcase');
     
     animateElements.forEach(element => {
         element.classList.add('animate-on-scroll');
     });
 
-    function checkScroll() {
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight * 0.9) {
-                element.classList.add('visible');
-            }
-        });
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // se activa cuando el 10% del elemento es visible
+    };
+
+    // Crear el observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        } else {
+            entry.target.classList.remove('visible');
+        }
+    });
+}, observerOptions);
+
+// Aplicar la clase base y observar
+animateElements.forEach(element => {
+    element.classList.add('animate-on-scroll');
+    observer.observe(element);
+});
+
+// Configuración para el cambio de color del navbar según la sección visible
+const navbar = document.querySelector('.design-navbar');
+
+// Asegurar que el navbar tenga una transición suave para todos los cambios
+navbar.style.transition = 'background-image 0.5s ease-in-out';
+
+// Colores para cada sección
+const sectionColors = {
+  'web-section': 'rgba(108, 92, 231, .90)',      // Rosa para Diseño Web
+  'logo-section': 'rgba(0, 184, 148, .90)',     // Amarillo para Logotipos
+  'serigrafia-section': 'rgba(219, 8, 247, .90)', // Púrpura para Serigrafía
+  'merch-section': 'rgba(253, 203, 110, .90)',     // Rojo para Merchandising
+  'active': 'rgba(255, 2, 196, 0.90)'             // Color por defecto para la sección hero
+};
+
+// Color inicial para el navbar (sección hero/active)
+navbar.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.95) 70%, ${sectionColors['active']} 100%)`;
+
+// Función para actualizar el color del navbar
+function updateNavbarColor(sectionClass) {
+  if (sectionColors[sectionClass]) {
+    navbar.style.backgroundImage = `linear-gradient(to right, rgba(0, 0, 0, 0.95) 70%, ${sectionColors[sectionClass]} 100%)`;
+    console.log('Navbar color actualizado para:', sectionClass, sectionColors[sectionClass]);
+  }
+}
+
+// Observer para detectar qué sección está visible
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    // Solo procesar cuando la sección entra en el viewport
+    if (entry.isIntersecting) {
+      // Obtener todas las clases del elemento
+      const classList = Array.from(entry.target.classList);
+      
+      // Buscar la clase que coincide con alguna de las secciones definidas
+      for (const className of classList) {
+        if (sectionColors[className]) {
+          updateNavbarColor(className);
+          break;
+        }
+      }
+      
+      // Si es la sección hero/active
+      if (entry.target.id === 'hero' && entry.target.classList.contains('active')) {
+        updateNavbarColor('active');
+      }
     }
+  });
+}, {
+  threshold: 0.3,                  // Se activa cuando el 30% de la sección es visible
+  rootMargin: '-86px 0px 0px 0px'  // Ajuste para compensar la altura del navbar
+});
 
-    // Comprobar posición inicial
-    checkScroll();
 
-    // Comprobar al hacer scroll
-    window.addEventListener('scroll', checkScroll);
+// Observar todas las secciones relevantes
+const allSections = document.querySelectorAll('#hero, #web-design, #logo-design, #serigrafia, #merchandising');
+
+// Registrar y observar cada sección
+allSections.forEach(section => {
+  // Registrar información de la sección para depuración
+  console.log('Observando sección:', section.id, Array.from(section.classList));
+  
+  // Asegurarse de que cada sección tenga las clases correctas para el cambio de color
+  if (section.id === 'web-design' && !section.classList.contains('web-section')) {
+    section.classList.add('web-section');
+  } else if (section.id === 'logo-design' && !section.classList.contains('logo-section')) {
+    section.classList.add('logo-section');
+  } else if (section.id === 'serigrafia' && !section.classList.contains('serigrafia-section')) {
+    section.classList.add('serigrafia-section');
+  } else if (section.id === 'merchandising' && !section.classList.contains('merch-section')) {
+    section.classList.add('merch-section');
+  }
+  
+  // Observar la sección
+  sectionObserver.observe(section);
+});
+
+// Añadir un listener para el scroll para verificar el funcionamiento
+let lastScrollPosition = 0;
+window.addEventListener('scroll', () => {
+  // Limitar la frecuencia de verificación para mejorar el rendimiento
+  const currentPosition = window.scrollY;
+  if (Math.abs(currentPosition - lastScrollPosition) < 50) return;
+  lastScrollPosition = currentPosition;
+  
+  // Verificar qué secciones están visibles
+  allSections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    // Una sección se considera visible si ocupa una parte significativa de la pantalla
+    const isVisible = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.3;
+    
+    if (isVisible) {
+      // Identificar la clase relevante para el color
+      const relevantClass = Array.from(section.classList).find(cls => sectionColors[cls]);
+      if (relevantClass) {
+        updateNavbarColor(relevantClass);
+      } else if (section.id === 'hero') {
+        updateNavbarColor('active');
+      }
+    }
+  });
+});
+
+// Forzar una actualización inicial
+const initialSection = document.querySelector('.section.active') || document.getElementById('hero');
+if (initialSection) {
+  const initialClass = Array.from(initialSection.classList).find(cls => sectionColors[cls]) || 'active';
+  updateNavbarColor(initialClass);
+}
+
+
+
+
+
+
+
+
+   
+
+    
+   
 
     // Navegación suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -260,13 +388,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cambiar color de la barra de navegación al hacer scroll
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
 });
