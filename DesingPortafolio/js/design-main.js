@@ -16,13 +16,35 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('active');
         });
 
-        // Cerrar menú al hacer clic en un enlace
+        // Cerrar menú al hacer clic en un enlace y actualizar estado activo
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
+                // Cerrar menú hamburguesa
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                
+                // Actualizar estado activo en el navbar
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                link.classList.add('active');
+                
+                // Obtener el ID de la sección desde el href
+                const sectionId = link.getAttribute('href').substring(1);
+                
+                // Actualizar el color del navbar según la sección
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const relevantClass = Array.from(section.classList).find(cls => sectionColors[cls]);
+                    if (relevantClass) {
+                        updateNavbarColor(relevantClass);
+                    } else if (sectionId === 'hero') {
+                        updateNavbarColor('active');
+                    }
+                }
             });
         });
+
     }
     
     // Crear modal para visualización de imágenes en pantalla completa
@@ -294,12 +316,35 @@ const sectionObserver = new IntersectionObserver((entries) => {
       if (entry.target.id === 'hero' && entry.target.classList.contains('active')) {
         updateNavbarColor('active');
       }
+      
+      // Actualizar el estado activo en el navbar
+      updateActiveNavLink(entry.target.id);
     }
   });
 }, {
   threshold: 0.3,                  // Se activa cuando el 30% de la sección es visible
   rootMargin: '-86px 0px 0px 0px'  // Ajuste para compensar la altura del navbar
 });
+
+// Función para actualizar el enlace activo en el navbar
+function updateActiveNavLink(sectionId) {
+  // Quitar la clase active de todos los enlaces
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Añadir la clase active al enlace correspondiente a la sección visible
+  const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  } else if (sectionId === 'hero') {
+    // Si estamos en la sección hero, activar el enlace de Inicio
+    const homeLink = document.querySelector('.nav-link[href="#hero"]');
+    if (homeLink) {
+      homeLink.classList.add('active');
+    }
+  }
+}
 
 
 // Observar todas las secciones relevantes
@@ -347,6 +392,9 @@ window.addEventListener('scroll', () => {
       } else if (section.id === 'hero') {
         updateNavbarColor('active');
       }
+      
+      // Actualizar también el enlace activo en el navbar durante el scroll
+      updateActiveNavLink(section.id);
     }
   });
 });
@@ -356,6 +404,20 @@ const initialSection = document.querySelector('.section.active') || document.get
 if (initialSection) {
   const initialClass = Array.from(initialSection.classList).find(cls => sectionColors[cls]) || 'active';
   updateNavbarColor(initialClass);
+  
+  // Establecer el enlace activo inicial en el navbar
+  updateActiveNavLink(initialSection.id);
+  
+  // Asegurar que el enlace de Inicio esté activo al cargar la página si estamos en la sección hero
+  if (initialSection.id === 'hero') {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+    });
+    const homeLink = document.querySelector('.nav-link[href="#hero"]');
+    if (homeLink) {
+      homeLink.classList.add('active');
+    }
+  }
 }
 
 
@@ -377,6 +439,12 @@ if (initialSection) {
             
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
+            
+            // Actualizar el estado activo en el navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {

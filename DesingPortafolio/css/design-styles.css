@@ -58,6 +58,17 @@
     width: 100%;
 }
 
+/* Estilo para el enlace activo en el navbar */
+.design-navbar .nav-link.active {
+    color: var(--design-primary);
+    font-weight: 500;
+}
+
+.design-navbar .nav-link.active::after {
+    width: 100%;
+    background-color: var(--design-primary);
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
