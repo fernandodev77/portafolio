@@ -170,16 +170,22 @@ img {
 
 /* Navbar */
 .navbar {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.95) 70%,
+        rgba(176, 0, 211, 0.95) 100%
+      );
+      backdrop-filter: blur(10px);
+      transition: background-image 0.5s ease-in-out, padding var(--transition-medium), box-shadow var(--transition-medium);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    transition: background-color var(--transition-medium);
 }
 
 .navbar.scrolled {
@@ -223,6 +229,7 @@ img {
     width: 0;
     height: 2px;
     background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    transition: w 0.2s ease;
 }
 
 @keyframes fadeOut {

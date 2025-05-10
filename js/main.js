@@ -1,1 +1,0 @@
-//* Se ha eliminado todo el codigo ya que era redundante con los estilos de CSS
