@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         },
         autoplay: {
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
         },
     });
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevEl: '.merch-showcase .swiper-button-prev',
         },
         autoplay: {
-            delay: 8000,
+            delay: 4000,
             disableOnInteraction: false,
         },
     });
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animación al hacer scroll
+    // Animación al hacer scroll TIME-SCROLL
     const animateElements = document.querySelectorAll('.section-title, .section-description, .design-card, .logo-item, .merch-item, .serigrafia-showcase, .merch-showcase');
     
     animateElements.forEach(element => {
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         root: null, // viewport
         rootMargin: '0px',
-        threshold: 0.1 // se activa cuando el 10% del elemento es visible
+        threshold: 0.4 // se activa cuando el 10% del elemento es visible
     };
 
     // Crear el observer
@@ -274,7 +274,7 @@ animateElements.forEach(element => {
 const navbar = document.querySelector('.design-navbar');
 
 // Asegurar que el navbar tenga una transición suave para todos los cambios
-navbar.style.transition = 'background-image 0.5s ease-in-out';
+navbar.style.transition = 'background-image 0.6s ease-in-out';
 
 // Colores para cada sección
 const sectionColors = {
@@ -317,12 +317,12 @@ const sectionObserver = new IntersectionObserver((entries) => {
         updateNavbarColor('active');
       }
       
-      // Actualizar el estado activo en el navbar
+      // Actualizar el estado activo en el navba TIME-NAV
       updateActiveNavLink(entry.target.id);
     }
   });
 }, {
-  threshold: 0.3,                  // Se activa cuando el 30% de la sección es visible
+  threshold: 0.4,                  // Se activa cuando el 30% de la sección es visible
   rootMargin: '-86px 0px 0px 0px'  // Ajuste para compensar la altura del navbar
 });
 
@@ -432,28 +432,28 @@ if (initialSection) {
     
    
 
-    // Navegación suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+    // // Navegación suave
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.addEventListener('click', function(e) {
+    //         e.preventDefault();
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+    //         const targetId = this.getAttribute('href');
+    //         if (targetId === '#') return;
             
-            // Actualizar el estado activo en el navbar
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            this.classList.add('active');
+    //         // Actualizar el estado activo en el navbar
+    //         document.querySelectorAll('.nav-link').forEach(link => {
+    //             link.classList.remove('active');
+    //         });
+    //         this.classList.add('active');
             
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    //         const targetElement = document.querySelector(targetId);
+    //         if (targetElement) {
+    //             window.scrollTo({
+    //                 top: targetElement.offsetTop - 80,
+    //                 behavior: 'smooth'
+    //             });
+    //         }
+    //     });
+    // });
 
 });
