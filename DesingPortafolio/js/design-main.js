@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Menú hamburguesa
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-link2s');
+    const navLinks = document.querySelector('.nav-links');
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Cerrar menú al hacer clic en un enlace y actualizar estado activo
-        document.querySelectorAll('.nav-link2').forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 // Cerrar menú hamburguesa
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
                 
                 // Actualizar estado activo en el navbar
-                document.querySelectorAll('.nav-link2').forEach(navLink => {
+                document.querySelectorAll('.nav-link').forEach(navLink => {
                     navLink.classList.remove('active');
                 });
                 link.classList.add('active');
@@ -329,17 +329,17 @@ const sectionObserver = new IntersectionObserver((entries) => {
 // Función para actualizar el enlace activo en el navbar
 function updateActiveNavLink(sectionId) {
   // Quitar la clase active de todos los enlaces
-  document.querySelectorAll('.nav-link2').forEach(link => {
+  document.querySelectorAll('.nav-link').forEach(link => {
     link.classList.remove('active');
   });
   
   // Añadir la clase active al enlace correspondiente a la sección visible
-  const activeLink = document.querySelector(`.nav-link2[href="#${sectionId}"]`);
+  const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
   if (activeLink) {
     activeLink.classList.add('active');
   } else if (sectionId === 'hero') {
     // Si estamos en la sección hero, activar el enlace de Inicio
-    const homeLink = document.querySelector('.nav-link2[href="#hero"]');
+    const homeLink = document.querySelector('.nav-link[href="#hero"]');
     if (homeLink) {
       homeLink.classList.add('active');
     }
@@ -410,10 +410,10 @@ if (initialSection) {
   
   // Asegurar que el enlace de Inicio esté activo al cargar la página si estamos en la sección hero
   if (initialSection.id === 'hero') {
-    document.querySelectorAll('.nav-link2').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
       link.classList.remove('active');
     });
-    const homeLink = document.querySelector('.nav-link2[href="#hero"]');
+    const homeLink = document.querySelector('.nav-link[href="#hero"]');
     if (homeLink) {
       homeLink.classList.add('active');
     }
