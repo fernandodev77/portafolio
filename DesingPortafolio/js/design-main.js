@@ -296,13 +296,20 @@ function updateNavbarColor(sectionClass) {
   }
 }
 
-// Observer para detectar qué sección está visible
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    // Solo procesar cuando la sección entra en el viewport
-    if (entry.isIntersecting) {
+// Configurar el Intersection Observer para las secciones usando la utilidad compartida
+const { observer: sectionObserver, updateActiveNavLink } = setupSectionObserver({
+  sectionSelector: '#hero, #web-design, #logo-design, #serigrafia, #merchandising',
+  navLinkSelector: '.nav-link',
+  activeClass: 'active',
+  threshold: 0.5,
+  rootMargin: '-86px 0px 0px 0px',
+  initialSectionId: 'hero',
+  onSectionChange: function(sectionId) {
+    // Obtener la sección
+    const section = document.getElementById(sectionId);
+    if (section) {
       // Obtener todas las clases del elemento
-      const classList = Array.from(entry.target.classList);
+      const classList = Array.from(section.classList);
       
       // Buscar la clase que coincide con alguna de las secciones definidas
       for (const className of classList) {
@@ -313,44 +320,17 @@ const sectionObserver = new IntersectionObserver((entries) => {
       }
       
       // Si es la sección hero/active
-      if (entry.target.id === 'hero' && entry.target.classList.contains('active')) {
+      if (sectionId === 'hero' && section.classList.contains('active')) {
         updateNavbarColor('active');
       }
-      
-      // Actualizar el estado activo en el navba TIME-NAV
-      updateActiveNavLink(entry.target.id);
-    }
-  });
-}, {
-  threshold: 0.5,                  // Se activa cuando el 30% de la sección es visible
-  rootMargin: '-86px 0px 0px 0px'  // Ajuste para compensar la altura del navbar
-});
-
-// Función para actualizar el enlace activo en el navbar
-function updateActiveNavLink(sectionId) {
-  // Quitar la clase active de todos los enlaces
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Añadir la clase active al enlace correspondiente a la sección visible
-  const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-  if (activeLink) {
-    activeLink.classList.add('active');
-  } else if (sectionId === 'hero') {
-    // Si estamos en la sección hero, activar el enlace de Inicio
-    const homeLink = document.querySelector('.nav-link[href="#hero"]');
-    if (homeLink) {
-      homeLink.classList.add('active');
     }
   }
-}
-
+});
 
 // Observar todas las secciones relevantes
 const allSections = document.querySelectorAll('#hero, #web-design, #logo-design, #serigrafia, #merchandising');
 
-// Registrar y observar cada sección
+// Asegurarse de que cada sección tenga las clases correctas para el cambio de color
 allSections.forEach(section => {
   // Registrar información de la sección para depuración
   console.log('Observando sección:', section.id, Array.from(section.classList));
@@ -365,9 +345,6 @@ allSections.forEach(section => {
   } else if (section.id === 'merchandising' && !section.classList.contains('merch-section')) {
     section.classList.add('merch-section');
   }
-  
-  // Observar la sección
-  sectionObserver.observe(section);
 });
 
 // Añadir un listener para el scroll para verificar el funcionamiento
