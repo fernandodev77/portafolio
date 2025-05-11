@@ -1,0 +1,102 @@
+/**
+ * Estilos de animación para usar con setupAnimationObserver
+ */
+
+/* Clase base para elementos ocultos */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Clase base para elementos animados */
+.animated {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s ease;
+}
+
+/* Animación de fade */
+.animation-fade {
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Animación de slide desde abajo */
+.animation-slide-up {
+    transform: translateY(0);
+}
+.hidden.animation-slide-up {
+    transform: translateY(50px);
+}
+
+/* Animación de slide desde arriba */
+.animation-slide-down {
+    transform: translateY(0);
+}
+.hidden.animation-slide-down {
+    transform: translateY(-50px);
+}
+
+/* Animación de slide desde la izquierda */
+.animation-slide-right {
+    transform: translateX(0);
+}
+.hidden.animation-slide-right {
+    transform: translateX(-50px);
+}
+
+/* Animación de slide desde la derecha */
+.animation-slide-left {
+    transform: translateX(0);
+}
+.hidden.animation-slide-left {
+    transform: translateX(50px);
+}
+
+/* Animación de zoom */
+.animation-zoom {
+    transform: scale(1);
+}
+.hidden.animation-zoom {
+    transform: scale(0.8);
+}
+
+/* Animación de rotación */
+.animation-rotate {
+    transform: rotate(0deg);
+}
+.hidden.animation-rotate {
+    transform: rotate(-10deg);
+}
+
+/* Animación de flip */
+.animation-flip {
+    transform: perspective(800px) rotateY(0deg);
+}
+.hidden.animation-flip {
+    transform: perspective(800px) rotateY(90deg);
+}
+
+/* Variaciones de duración */
+.animation-duration-fast {
+    transition-duration: 0.3s;
+}
+.animation-duration-slow {
+    transition-duration: 1s;
+}
+.animation-duration-very-slow {
+    transition-duration: 1.5s;
+}
+
+/* Variaciones de timing function */
+.animation-ease-in {
+    transition-timing-function: ease-in;
+}
+.animation-ease-out {
+    transition-timing-function: ease-out;
+}
+.animation-ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+.animation-bounce {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
