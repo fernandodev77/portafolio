@@ -9,6 +9,15 @@
     --transition-slow: 0.5s ease;
     --transition-medium: 0.3s ease;
     --transition-fast: 0.2s ease;
+    
+    /* Variables para la saturación del navbar por sección */
+    --navbar-saturation-inicio: 100%;
+    --navbar-saturation-portafolio: 50%;
+    --navbar-saturation-acerca: 40%;
+    --navbar-saturation-cv: 30%;
+    --navbar-saturation-blog: 20%;
+    --navbar-saturation-default: 100%;
+    --navbar-current-saturation: var(--navbar-saturation-default);
 }
 
 /* Reset & Base Styles */
@@ -199,8 +208,9 @@ img {
         rgba(0, 0, 0, 0.95) 70%,
         rgba(176, 0, 211, 0.95) 100%
       );
-      backdrop-filter: blur(10px);
-      transition: background-image 0.5s ease-in-out, padding var(--transition-medium), box-shadow var(--transition-medium);
+    filter: saturate(var(--navbar-current-saturation));
+    backdrop-filter: blur(10px);
+    transition: filter 1s ease-in-out, padding var(--transition-medium), box-shadow var(--transition-medium);
     position: fixed;
     top: 0;
     left: 0;
@@ -407,6 +417,7 @@ img {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+
 }
 
 .section-title::after {
@@ -463,6 +474,7 @@ img {
         font-size: 2.5rem;
     }
 }
+
 
 .subtitle {
     font-size: 1.5rem;
