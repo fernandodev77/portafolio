@@ -254,7 +254,6 @@
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 350px;
 }
 
 .logo-item:hover {
@@ -692,7 +691,7 @@
 }
 
 /* Media Queries para Responsive Design */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .design-section {
         padding: 80px 0;
     }
@@ -748,7 +747,7 @@
     
     .logo-gallery {
         grid-template-columns: repeat(1, 1fr);
-        max-width: 400px;
+        max-width: 350px;
     }
     
     .merch-grid {
@@ -760,9 +759,12 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
+        position: relative;
+    left: auto;
+   
       
         
     }
