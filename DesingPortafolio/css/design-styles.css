@@ -109,6 +109,8 @@
 
 .design-hero-image .shape {
     background: linear-gradient(45deg, var(--design-primary), var(--design-secondary));
+    border-radius: 100% 0% 100% 0% / 99% 0% 100% 1% ;
+
 }
 
 .design-profile-img {
@@ -721,6 +723,9 @@
     
     .nav-links.active {
         right: 0;
+        /* Mantener el degradado también cuando está activo */
+        background-image: linear-gradient(135deg, var(--design-dark) 30%, rgba(255, 2, 196, 0.95) 100%);
+        background-color: unset;
     }
     
     .nav-links li {
