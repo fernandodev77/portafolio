@@ -34,10 +34,10 @@
     color: var(--design-primary);
 }
 
-.design-navbar .nav-link {
+/* .design-navbar .nav-link {
     position: relative;
     transition: color 0.3s ease;
-}
+} */
 
 .design-navbar .nav-link::after {
     content: '';
@@ -47,16 +47,16 @@
     width: 0;
     height: 2px;
     background-color: var(--design-primary);
-    transition: width 0.2s ease;
+    transition: width 0.4s ease;
 }
 
-.design-navbar .nav-link:hover {
+/* .design-navbar .nav-link:hover {
     color: var(--design-primary);
-}
+} */
 
-.design-navbar .nav-link:hover::after {
+/* .design-navbar .nav-link:hover::after {
     width: 100%;
-}
+} */
 
 /* Estilo para el enlace activo en el navbar */
 .design-navbar .nav-link.active {
@@ -64,10 +64,10 @@
     font-weight: 500;
 }
 
-.design-navbar .nav-link.active::after {
+/* .design-navbar .nav-link.active::after {
     width: 100%;
     background-color: var(--design-primary);
-}
+} */
 
 /* Hamburger Menu */
 .hamburger {
@@ -715,7 +715,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: right 0.5s ease;
+        transition: right 0.7s ease;
         z-index: 100;
     }
     
