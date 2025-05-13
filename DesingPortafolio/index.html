@@ -6,11 +6,15 @@
     <title>Fernando Castillo | Portafolio de Diseño</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="./css/design-styles.css">
+    <link rel="stylesheet" href="./css/animation-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Swiper CSS para carruseles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="../js/shared-utils.js"></script>
+    <!-- Three.js para animaciones 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
 </head>
 <body>
     <!-- Animación inicial -->
@@ -46,6 +50,8 @@
 
     <!-- Hero Section -->
     <section id="hero" class="section active">
+        <!-- Contenedor para la animación 3D como fondo -->
+        <div id="animation-container" class="animation-3d-container"></div>
         <div class="container">
             <div class="hero-content">
                 <h1 class="glitch-text">Diseño Creativo & Visual</h1>
@@ -56,8 +62,9 @@
                 </div>
             </div>
             <div class="hero-image design-hero-image">
-                <div class="shape"></div>
-                <div class="design-profile-img"></div>
+                <!-- Elementos originales con menor jerarquía -->
+                <div class="shape" style="opacity: 0.3;"></div>
+                <div class="design-profile-img" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -361,5 +368,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="./js/design-main.js"></script>
+    <!-- Script de animación 3D -->
+    <script src="./animation/script.js"></script>
 </body>
 </html>
