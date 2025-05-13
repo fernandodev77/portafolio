@@ -41,6 +41,55 @@ document.addEventListener('DOMContentLoaded', function() {
         initialSectionId: 'inicio'
     });
 
+    // Seccion Web Desing - Filtros
+    const filterButtons = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.portfolio-item');
+const DURATION = 400; // coincide con 0.4s de tu CSS
+
+function showProject(proj) {
+  // 1) restaurar display para que participe en el grid
+  proj.style.display = '';
+  // 2) forzamos reflow para que el browser “vea” el display antes de la transición
+  proj.getBoundingClientRect();
+  // 3) quitamos la clase oculta para que haga fade-in + lift
+  proj.classList.remove('is-hidden');
+}
+
+function hideProject(proj) {
+  // 1) añadimos la clase oculta para que haga fade-out + drop
+  proj.classList.add('is-hidden');
+  // 2) tras la transición, lo retiramos del flujo
+  setTimeout(() => {
+    proj.style.display = 'none';
+  }, DURATION);
+}
+
+function filterProjects(category) {
+  projects.forEach(project => {
+    const projectCategory = project.getAttribute('data-category');
+    const matches = (category === 'all' || projectCategory === category);
+
+    if (matches) {
+      showProject(project);
+    } else {
+      // evita re-hiding si ya está oculto
+      if (!project.classList.contains('is-hidden')) {
+        hideProject(project);
+      }
+    }
+  });
+}
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const category = button.getAttribute('data-filter');
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    filterProjects(category);
+  });
+});
+
+
     // Navegación suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
