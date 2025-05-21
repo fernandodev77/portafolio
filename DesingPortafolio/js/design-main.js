@@ -240,35 +240,114 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animación al hacer scroll TIME-SCROLL
-    const animateElements = document.querySelectorAll('.section-title, .section-description, .design-card, .logo-item, .merch-item, .serigrafia-showcase, .merch-showcase');
+    // Sistema de animaciones utilizando setupAnimationObserver
+    // Añadir clase 'animate' a los elementos que queremos animar
+    document.querySelectorAll('.section-title, .section-description').forEach(element => {
+        element.classList.add('animate');
+    });
     
-    animateElements.forEach(element => {
-        element.classList.add('animate-on-scroll');
+    document.querySelectorAll('.design-card').forEach(element => {
+        element.classList.add('animate');
     });
-
-    const observerOptions = {
-        root: null, // viewport
-        rootMargin: '0px',
-        threshold: 0.4 // se activa cuando el 10% del elemento es visible
-    };
-
-    // Crear el observer
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        } else {
-            entry.target.classList.remove('visible');
-        }
+    
+    document.querySelectorAll('.logo-item').forEach(element => {
+        element.classList.add('animate');
     });
-}, observerOptions);
-
-// Aplicar la clase base y observar
-animateElements.forEach(element => {
-    element.classList.add('animate-on-scroll');
-    observer.observe(element);
-});
+    
+    document.querySelectorAll('.serigrafia-item, .serigrafia-showcase').forEach(element => {
+        element.classList.add('animate');
+    });
+    
+    document.querySelectorAll('.merch-item, .merch-showcase').forEach(element => {
+        element.classList.add('animate');
+    });
+    
+    // Configurar animaciones para cada sección
+    // Hero section
+    const heroAnimations = setupAnimationObserver({
+        elementsSelector: '#hero .animate',
+        animationType: 'fade',
+        threshold: 0.3,
+        delay: 100,
+        stagger: 150,
+        customAnimations: {
+            'h1': 'slide-down',
+            'p': 'slide-up',
+            '.cta-buttons': 'zoom'
+        },
+        once: false // Permite que las animaciones se repitan al hacer scroll hacia arriba
+    });
+    
+    // Web design section
+    const webAnimations = setupAnimationObserver({
+        elementsSelector: '#web-design .animate',
+        animationType: 'slide-up',
+        threshold: 0.2,
+        delay: 100,
+        stagger: 150,
+        customAnimations: {
+            '.section-title': 'slide-down',
+            '.section-description': 'fade',
+            '.design-card': 'slide-right'
+        },
+        once: false // Permite que las animaciones se repitan al hacer scroll hacia arriba
+    });
+    
+    // Logo design section
+    const logoAnimations = setupAnimationObserver({
+        elementsSelector: '#logo-design .animate',
+        animationType: 'fade',
+        threshold: 0.2,
+        delay: 100,
+        stagger: 200,
+        customAnimations: {
+            '.section-title': 'slide-down',
+            '.section-description': 'fade',
+            '.logo-item': 'zoom'
+        },
+        once: false // Permite que las animaciones se repitan al hacer scroll hacia arriba
+    });
+    
+    // Serigrafia section
+    const serigrafiaAnimations = setupAnimationObserver({
+        elementsSelector: '#serigrafia .animate',
+        animationType: 'slide-left',
+        threshold: 0.2,
+        delay: 100,
+        stagger: 150,
+        customAnimations: {
+            '.section-title': 'slide-down',
+            '.section-description': 'fade',
+            '.serigrafia-item': 'zoom',
+            '.serigrafia-showcase': 'fade'
+        },
+        once: false // Permite que las animaciones se repitan al hacer scroll hacia arriba
+    });
+    
+    // Merchandising section
+    const merchAnimations = setupAnimationObserver({
+        elementsSelector: '#merchandising .animate',
+        animationType: 'slide-right',
+        threshold: 0.2,
+        delay: 100,
+        stagger: 150,
+        customAnimations: {
+            '.section-title': 'slide-down',
+            '.section-description': 'fade',
+            '.merch-item': 'zoom',
+            '.merch-showcase': 'fade'
+        },
+        once: false // Permite que las animaciones se repitan al hacer scroll hacia arriba
+    });
+    
+    // Actualizar animaciones cuando cambia el DOM
+    function refreshAnimations() {
+        heroAnimations.refresh();
+        webAnimations.refresh();
+        logoAnimations.refresh();
+        serigrafiaAnimations.refresh();
+        merchAnimations.refresh();
+    }
 
 // Configuración para el cambio de color del navbar según la sección visible
 const navbar = document.querySelector('.design-navbar');
