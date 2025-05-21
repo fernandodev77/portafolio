@@ -859,13 +859,5 @@
 }
 
 /* Animación para elementos al hacer scroll */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Las animaciones ahora se manejan a través del sistema modular de animaciones */
+/* Ver ../css/animations.css para los estilos de animación */
